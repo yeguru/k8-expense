@@ -25,3 +25,17 @@ spec:
       containers:
       - name: nginx
         image: yeguru/mysql:1.0.0
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql
+spec:
+  selector:     #labels are used as selectors
+    app: mysql
+    tier: mysql
+    project: expense
+  ports:
+  - protocol: TCP
+    port: 3306  #service port
+    targetPort: 3306
